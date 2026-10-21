@@ -1,7 +1,7 @@
 # Dual Architecture Full-Stack Portfolio
 
 ## 🎯 Project Vision
-To build a comprehensive software engineering portfolio that demonstrates mastery of both Monolithic and Microservices architectures. The project will run in a Monorepo workspace, allowing shared UI components and typed interfaces across both environments, culminating in a public-facing showcase for technical recruiters.
+To build a comprehensive software engineering portfolio that demonstrates mastery of both Monolithic and Microservices architectures. The project will run in a Monorepo workspace, allowing shared UI components and typed interfaces across both environments, culminating in a public-facing showcase.
 
 ## 🗂️ Repository Structure (Monorepo)
 Initialize your workspace with the following architecture:
