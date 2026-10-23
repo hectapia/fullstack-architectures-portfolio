@@ -145,6 +145,25 @@ Time:     15.397s
 
 ---
 
+### Step 6: Git Staging & Day 2 Baseline Commit
+Staged all modified files and recorded the Day 2 commit:
+
+```bash
+git add .
+git commit -m "D02 Setup Tailwind CSS design tokens, typography, CSS variables, and color palette"
+```
+
+**Commit Log:**
+```text
+commit befb813a07b1e3d13aeb9b21677e75130c66a837
+Author: hectapia <holivarestapia@byupathway.edu>
+Date:   Thu Oct 22 19:22:27 2026 -0600
+
+    D02 Setup Tailwind CSS design tokens, typography, CSS variables, and color palette
+```
+
+---
+
 ## 🎨 3. Token Architecture Summary
 
 | Token Name | Value | Purpose |
