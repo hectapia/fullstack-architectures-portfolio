@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     /* Color Tokens - Default Dark Mode (Recruiter Showcase) */
     --background: #080c14;
