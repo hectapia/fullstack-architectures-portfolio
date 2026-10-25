@@ -33,11 +33,11 @@ export default function MainContentLayout({ children }: MainContentLayoutProps) 
               </span>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-white">
-                  Sprint 1 • Day 3
+                  Sprint 1 • Day 4
                 </span>
                 <span className="hidden sm:inline text-white/30">•</span>
                 <span className="text-xs text-[var(--color-foreground-muted)] hidden sm:inline">
-                  Structural Layouts (Navbar, Footer & CSS Grid Main Stage)
+                  Hero Section & Dual Architecture Choice Cards (Monolith vs Microservices)
                 </span>
               </div>
             </div>
