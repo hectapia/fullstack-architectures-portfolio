@@ -189,14 +189,14 @@ export default function Navbar() {
           {/* Mobile Menu Hamburger Button */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex md:hidden items-center justify-center h-9 w-9 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="flex md:hidden items-center justify-center min-h-[44px] min-w-[44px] rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 active:scale-95 transition-all touch-manipulation cursor-pointer select-none"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle mobile navigation menu"
           >
             {mobileMenuOpen ? (
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 pointer-events-none"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -206,7 +206,7 @@ export default function Navbar() {
               </svg>
             ) : (
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 pointer-events-none"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -221,7 +221,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[var(--color-card-border)] bg-[var(--color-background)]/95 backdrop-blur-2xl px-4 py-6 transition-all animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden border-t border-[var(--color-card-border)] bg-[var(--background)]/95 backdrop-blur-2xl px-4 py-6 transition-all duration-200 max-h-[calc(100dvh-4rem)] overflow-y-auto">
           <nav className="flex flex-col gap-2">
             <a
               href="#architectures"
