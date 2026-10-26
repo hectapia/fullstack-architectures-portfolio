@@ -22,6 +22,7 @@ COMMENT ON COLUMN public.contacts_waitlist.architecture_focus IS 'Selected parad
 ALTER TABLE public.contacts_waitlist ENABLE ROW LEVEL SECURITY;
 
 -- 4. Policy: Allow unauthenticated (anon) visitors to insert submissions
+DROP POLICY IF EXISTS "Allow public insert to contacts_waitlist" ON public.contacts_waitlist;
 CREATE POLICY "Allow public insert to contacts_waitlist"
     ON public.contacts_waitlist
     FOR INSERT
@@ -29,6 +30,7 @@ CREATE POLICY "Allow public insert to contacts_waitlist"
     WITH CHECK (true);
 
 -- 5. Policy: Restrict reading submissions strictly to authenticated admins/dashboard users
+DROP POLICY IF EXISTS "Allow authenticated users to view contacts_waitlist" ON public.contacts_waitlist;
 CREATE POLICY "Allow authenticated users to view contacts_waitlist"
     ON public.contacts_waitlist
     FOR SELECT

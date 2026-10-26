@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { submitWaitlistEntry, isSupabaseConfigured, WaitlistSubmission } from "@/lib/supabaseClient";
+import {
+  submitWaitlistEntry,
+  isSupabaseConfigured,
+  WaitlistSubmission,
+  SubmissionResult,
+} from "@/lib/supabaseClient";
 
 export default function ContactWaitlistSection() {
   const [formData, setFormData] = useState<WaitlistSubmission>({
@@ -13,37 +18,50 @@ export default function ContactWaitlistSection() {
   });
 
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState<string>("");
-  const [isSimulatedResponse, setIsSimulatedResponse] = useState<boolean>(false);
+  const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic client validation
+    if (!isSupabaseConfigured) {
+      setFormState("error");
+      setSubmissionResult({
+        success: false,
+        message:
+          "Supabase environment variables are missing. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to apps/portfolio-landing/.env.local and restart the server.",
+      });
+      return;
+    }
+
     if (!formData.full_name.trim() || !formData.email.trim()) {
       setFormState("error");
-      setStatusMessage("Please provide your full name and a valid email address.");
+      setSubmissionResult({
+        success: false,
+        message: "Please provide your full name and a valid corporate email address.",
+      });
       return;
     }
 
     if (!formData.email.includes("@") || !formData.email.includes(".")) {
       setFormState("error");
-      setStatusMessage("Please enter a valid corporate or professional email address.");
+      setSubmissionResult({
+        success: false,
+        message: "Please enter a valid email address.",
+      });
       return;
     }
 
     setFormState("submitting");
-    setStatusMessage("");
+    setSubmissionResult(null);
 
     const result = await submitWaitlistEntry(formData);
 
     if (result.success) {
       setFormState("success");
-      setStatusMessage(result.message);
-      setIsSimulatedResponse(Boolean(result.isSimulated));
+      setSubmissionResult(result);
     } else {
       setFormState("error");
-      setStatusMessage(result.message || "Failed to submit. Please try again.");
+      setSubmissionResult(result);
     }
   };
 
@@ -56,7 +74,7 @@ export default function ContactWaitlistSection() {
       message: "",
     });
     setFormState("idle");
-    setStatusMessage("");
+    setSubmissionResult(null);
   };
 
   return (
@@ -81,7 +99,7 @@ export default function ContactWaitlistSection() {
             Connect & Recruiter Waitlist
           </h2>
           <p className="text-sm text-[var(--color-foreground-muted)] mt-1 max-w-2xl">
-            Register your interest in upcoming sprint releases, schedule a technical interview, or connect directly regarding engineering roles.
+            Register your interest in upcoming sprint releases, schedule a technical interview, or connect directly regarding engineering opportunities.
           </p>
         </div>
 
@@ -93,7 +111,9 @@ export default function ContactWaitlistSection() {
             }`}
           />
           <span className="text-slate-300">
-            Backend: {isSupabaseConfigured ? "Supabase Live" : "Supabase Ready (Dev Mode)"}
+            {isSupabaseConfigured
+              ? "Database: Supabase Live (Cloud PostgreSQL)"
+              : "Database: Awaiting .env.local Configuration"}
           </span>
         </div>
       </div>
@@ -111,10 +131,11 @@ export default function ContactWaitlistSection() {
                 Cloud Persistence Layer
               </span>
               <h3 className="font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-bold text-white mt-1">
-                Supabase Integration
+                Real Supabase PostgreSQL
               </h3>
               <p className="text-sm text-[var(--color-foreground-muted)] leading-relaxed mt-2">
-                This form demonstrates real-world Next.js App Router client integration backed by Supabase PostgreSQL with strict Row Level Security (RLS) enforcement.
+                This form connects directly to your live Supabase cloud project, storing submissions in the{" "}
+                <code className="text-emerald-300 font-mono text-xs">public.contacts_waitlist</code> table with strict Row Level Security (RLS) enforcement.
               </p>
             </div>
 
@@ -127,7 +148,7 @@ export default function ContactWaitlistSection() {
                 <div>
                   <span className="text-white font-medium block">Row Level Security (RLS)</span>
                   <span className="text-[var(--color-foreground-muted)]">
-                    Public anonymous inserts enabled; read queries strictly restricted to service role.
+                    Public anonymous inserts allowed via API anon key; query reading is strictly locked to authenticated admins.
                   </span>
                 </div>
               </div>
@@ -137,9 +158,9 @@ export default function ContactWaitlistSection() {
                   ✓
                 </span>
                 <div>
-                  <span className="text-white font-medium block">Polyglot Blueprint</span>
+                  <span className="text-white font-medium block">Polyglot Architecture Blueprint</span>
                   <span className="text-[var(--color-foreground-muted)]">
-                    Acts as the relational foundation for Phase 2 Mexican SAT Payroll (Sprint 6).
+                    Lays the Supabase relational foundation for Phase 2 Mexican SAT Payroll (Sprint 6).
                   </span>
                 </div>
               </div>
@@ -149,9 +170,9 @@ export default function ContactWaitlistSection() {
                   ✓
                 </span>
                 <div>
-                  <span className="text-white font-medium block">Graceful Fallback Mode</span>
+                  <span className="text-white font-medium block">Real-time Telemetry Verification</span>
                   <span className="text-[var(--color-foreground-muted)]">
-                    Local development seamlessly operates with mocked asynchronous feedback when keys are pending.
+                    Returns generated PostgreSQL UUID and server timestamp upon successful commit.
                   </span>
                 </div>
               </div>
@@ -184,9 +205,9 @@ export default function ContactWaitlistSection() {
 
         {/* Right Column: Interactive Form Card (7 Cols) */}
         <div className="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 3xl:p-10 border-white/10 relative">
-          {formState === "success" ? (
+          {formState === "success" && submissionResult?.success ? (
             /* ======================================================== */
-            /* SUCCESS STATE VIEW                                       */
+            /* SUCCESS STATE VIEW (REAL SUPABASE INSERTION CONFIRMATION) */
             /* ======================================================== */
             <div
               className="flex flex-col items-center justify-center py-10 px-4 text-center gap-5 min-h-[440px]"
@@ -198,20 +219,42 @@ export default function ContactWaitlistSection() {
 
               <div className="space-y-2">
                 <h3 className="font-[family-name:var(--font-heading)] text-2xl font-bold text-white">
-                  Submission Successfully Recorded!
+                  Successfully Stored in Supabase!
                 </h3>
                 <p className="text-sm text-[var(--color-foreground-muted)] max-w-md mx-auto">
-                  Thank you, <strong className="text-white">{formData.full_name}</strong>. Your entry has been recorded under the{" "}
-                  <span className="text-emerald-300 font-mono font-medium">{formData.role}</span> persona.
+                  Thank you, <strong className="text-white">{formData.full_name}</strong>. Your entry has been committed to the live PostgreSQL cloud database.
                 </p>
               </div>
 
-              {isSimulatedResponse && (
-                <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-300 max-w-md">
-                  Notice: Processed via local simulation mode. To persist live to cloud, set active credentials in{" "}
-                  <code className="text-white">apps/portfolio-landing/.env.local</code>.
+              {/* Real Database Telemetry Card */}
+              <div className="w-full max-w-md p-3.5 rounded-xl bg-slate-950/80 border border-emerald-500/30 text-left font-mono text-xs space-y-1.5">
+                <div className="flex items-center justify-between text-[11px] text-emerald-400 border-b border-white/10 pb-1.5 mb-1.5">
+                  <span className="uppercase tracking-wider font-semibold">PostgreSQL Commit Telemetry</span>
+                  <span className="text-slate-400">table: contacts_waitlist</span>
                 </div>
-              )}
+                {submissionResult.recordId && (
+                  <div className="flex items-center justify-between text-slate-300">
+                    <span className="text-slate-500">Record UUID:</span>
+                    <span className="font-mono text-emerald-300 truncate max-w-[240px]">
+                      {submissionResult.recordId}
+                    </span>
+                  </div>
+                )}
+                {submissionResult.timestamp && (
+                  <div className="flex items-center justify-between text-slate-300">
+                    <span className="text-slate-500">Committed At:</span>
+                    <span>{new Date(submissionResult.timestamp).toLocaleString()}</span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between text-slate-300">
+                  <span className="text-slate-500">Persona Role:</span>
+                  <span className="text-cyan-300">{formData.role}</span>
+                </div>
+                <div className="flex items-center justify-between text-slate-300">
+                  <span className="text-slate-500">Architecture:</span>
+                  <span className="text-indigo-300">{formData.architecture_focus}</span>
+                </div>
+              </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <button
@@ -234,18 +277,37 @@ export default function ContactWaitlistSection() {
             /* FORM INPUT VIEW (Idle / Submitting / Error)              */
             /* ======================================================== */
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {/* Not Configured Banner Alert */}
+              {!isSupabaseConfigured && (
+                <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono flex items-start gap-2.5">
+                  <svg className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <div>
+                    <span className="font-semibold block text-white">Live Supabase Connection Pending Configuration</span>
+                    <span>
+                      Add your project URL and anon public key to{" "}
+                      <code className="text-amber-200 bg-amber-500/20 px-1 py-0.5 rounded">
+                        apps/portfolio-landing/.env.local
+                      </code>{" "}
+                      to enable live PostgreSQL inserts.
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Error Notice Banner */}
-              {formState === "error" && statusMessage && (
+              {formState === "error" && submissionResult?.message && (
                 <div
-                  className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono flex items-center gap-2"
+                  className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono flex items-start gap-2.5"
                   role="alert"
                 >
-                  <svg className="h-4 w-4 shrink-0 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <svg className="h-4 w-4 shrink-0 text-rose-400 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <circle cx="12" cy="12" r="10" strokeWidth="2" />
                     <line x1="12" y1="8" x2="12" y2="12" strokeWidth="2" />
                     <line x1="12" y1="16" x2="12.01" y2="16" strokeWidth="2" />
                   </svg>
-                  <span>{statusMessage}</span>
+                  <span className="leading-relaxed">{submissionResult.message}</span>
                 </div>
               )}
 
@@ -318,9 +380,9 @@ export default function ContactWaitlistSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {(
                     [
-                      { id: "Both", label: "Both Paradigms", color: "emerald" },
-                      { id: "Monolith", label: "Monolith (Django)", color: "indigo" },
-                      { id: "Microservices", label: "Microservices (GraphQL)", color: "cyan" },
+                      { id: "Both", label: "Both Paradigms" },
+                      { id: "Monolith", label: "Monolith (Django)" },
+                      { id: "Microservices", label: "Microservices (GraphQL)" },
                     ] as const
                   ).map((arch) => (
                     <button
@@ -365,7 +427,7 @@ export default function ContactWaitlistSection() {
               {/* Submit Action */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <span className="text-[11px] font-mono text-[var(--color-foreground-subtle)] order-2 sm:order-1 text-center sm:text-left">
-                  Secured with Supabase RLS • Zero Spam Guaranteed
+                  Secured with Supabase RLS • Direct Cloud PostgreSQL Insert
                 </span>
 
                 <button
@@ -379,7 +441,7 @@ export default function ContactWaitlistSection() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
-                      <span>Transmitting...</span>
+                      <span>Persisting to Supabase...</span>
                     </>
                   ) : (
                     <>
