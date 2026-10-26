@@ -89,42 +89,42 @@ export default function ArchitectureChoiceCards({
         {/* ============================================================ */}
         <article
           id="monolith"
-          className={`glass-panel rounded-2xl p-6 sm:p-8 flex flex-col justify-between border transition-all duration-300 relative overflow-hidden group scroll-mt-24 ${
+          className={`glass-panel rounded-2xl p-5 sm:p-8 3xl:p-10 flex flex-col justify-between border transition-all duration-300 relative overflow-hidden group scroll-mt-24 ${
             isMonolithActive
               ? "border-indigo-500/40 shadow-xl shadow-indigo-500/10 opacity-100 ring-1 ring-indigo-500/20"
               : "border-white/5 opacity-50 hover:opacity-80"
           }`}
         >
           {/* Ambient Glow Orb */}
-          <div className="absolute top-0 right-0 h-48 w-48 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/25 transition-all" />
+          <div className="absolute top-0 right-0 h-48 w-48 3xl:h-72 3xl:w-72 bg-indigo-500/15 rounded-full blur-3xl 3xl:blur-[100px] pointer-events-none group-hover:bg-indigo-500/25 transition-all" />
 
-          <div className="flex flex-col gap-6 relative z-10">
+          <div className="flex flex-col gap-5 sm:gap-6 relative z-10">
             {/* Top Badges */}
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/15 border border-indigo-500/30 px-3 py-1 text-xs font-mono font-medium text-indigo-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-indigo-500/15 border border-indigo-500/30 px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-mono font-medium text-indigo-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 shrink-0" />
                 Paradigm A: Monolith
               </span>
-              <span className="font-mono text-xs text-indigo-300/90 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">
+              <span className="font-mono text-[11px] sm:text-xs text-indigo-300/90 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">
                 Phase 1 • Sprint 2 Deliverable
               </span>
             </div>
 
             {/* Title & Core Philosophy */}
             <div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl font-bold text-white">
+              <h3 className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl 3xl:text-4xl font-bold text-white">
                 Centralized MVC Platform
               </h3>
-              <p className="text-sm sm:text-base text-[var(--color-foreground-muted)] leading-relaxed mt-2 font-normal">
+              <p className="text-xs sm:text-base 3xl:text-lg text-[var(--color-foreground-muted)] leading-relaxed mt-2 font-normal">
                 A single unified application repository maximizing schema cohesion, ACID transaction guarantees, simplified zero-network in-memory operations, and effortless single-container deployment.
               </p>
             </div>
 
             {/* Interactive Architecture Schematic Simulation */}
-            <div className="rounded-xl bg-slate-950/70 border border-indigo-500/20 p-4 font-mono text-xs">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
-                <span className="text-[11px] uppercase tracking-wider text-indigo-400 font-semibold flex items-center gap-1.5">
-                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <div className="rounded-xl bg-slate-950/70 border border-indigo-500/20 p-3 sm:p-4 font-mono text-xs">
+              <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/5">
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-indigo-400 font-semibold flex items-center gap-1.5">
+                  <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   Monolithic Request Pipeline
@@ -143,49 +143,49 @@ export default function ArchitectureChoiceCards({
               {/* Data Flow Sequence */}
               <div className="space-y-2">
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "monolith"
-                      ? "bg-indigo-500/20 text-white font-medium"
+                      ? "bg-indigo-500/20 text-white font-medium border-l-2 border-indigo-400"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     1
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>HTTP Client (Next.js)</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">HTTP Client (Next.js)</span>
                     <span className="text-white/40 text-[10px]">POST /api/invoices/</span>
                   </div>
                 </div>
 
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "monolith"
-                      ? "bg-indigo-500/25 text-white font-medium pl-4"
+                      ? "bg-indigo-500/25 text-white font-medium border-l-2 border-indigo-400 xs:pl-3"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     2
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>Django 5 REST Core</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">Django 5 REST Core</span>
                     <span className="text-white/40 text-[10px]">Auth + PDF Ingestion</span>
                   </div>
                 </div>
 
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "monolith"
-                      ? "bg-indigo-500/30 text-white font-medium pl-6 border border-indigo-500/40"
+                      ? "bg-indigo-500/30 text-white font-medium border border-indigo-500/40 xs:pl-4"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-indigo-500/30 text-indigo-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     3
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>Aiven PostgreSQL</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">Aiven PostgreSQL</span>
                     <span className="text-emerald-400 text-[10px]">ACID Commit (0.8ms)</span>
                   </div>
                 </div>
@@ -226,30 +226,30 @@ export default function ArchitectureChoiceCards({
             </div>
 
             {/* Technology Stack Tags */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 Python 3.12
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 Django 5.x
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 Django REST
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 Aiven PostgreSQL
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 PyPDF Parser
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-indigo-200">
                 Docker Single Unit
               </span>
             </div>
           </div>
 
           {/* Bottom Card Footer & Action */}
-          <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-white/10 flex items-center justify-between">
             <a
               href="#tech-matrix"
               className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-indigo-300 hover:text-white transition-colors"
@@ -270,42 +270,42 @@ export default function ArchitectureChoiceCards({
         {/* ============================================================ */}
         <article
           id="microservices"
-          className={`glass-panel rounded-2xl p-6 sm:p-8 flex flex-col justify-between border transition-all duration-300 relative overflow-hidden group scroll-mt-24 ${
+          className={`glass-panel rounded-2xl p-5 sm:p-8 3xl:p-10 flex flex-col justify-between border transition-all duration-300 relative overflow-hidden group scroll-mt-24 ${
             isMicroActive
               ? "border-cyan-500/40 shadow-xl shadow-cyan-500/10 opacity-100 ring-1 ring-cyan-500/20"
               : "border-white/5 opacity-50 hover:opacity-80"
           }`}
         >
           {/* Ambient Glow Orb */}
-          <div className="absolute top-0 right-0 h-48 w-48 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/25 transition-all" />
+          <div className="absolute top-0 right-0 h-48 w-48 3xl:h-72 3xl:w-72 bg-cyan-500/15 rounded-full blur-3xl 3xl:blur-[100px] pointer-events-none group-hover:bg-cyan-500/25 transition-all" />
 
-          <div className="flex flex-col gap-6 relative z-10">
+          <div className="flex flex-col gap-5 sm:gap-6 relative z-10">
             {/* Top Badges */}
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-cyan-500/15 border border-cyan-500/30 px-3 py-1 text-xs font-mono font-medium text-cyan-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-cyan-500/15 border border-cyan-500/30 px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-mono font-medium text-cyan-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
                 Paradigm B: Microservices
               </span>
-              <span className="font-mono text-xs text-cyan-300/90 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">
+              <span className="font-mono text-[11px] sm:text-xs text-cyan-300/90 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">
                 Phase 2 • Sprints 5-8 Mesh
               </span>
             </div>
 
             {/* Title & Core Philosophy */}
             <div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl font-bold text-white">
+              <h3 className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl 3xl:text-4xl font-bold text-white">
                 Distributed Event Mesh
               </h3>
-              <p className="text-sm sm:text-base text-[var(--color-foreground-muted)] leading-relaxed mt-2 font-normal">
+              <p className="text-xs sm:text-base 3xl:text-lg text-[var(--color-foreground-muted)] leading-relaxed mt-2 font-normal">
                 Deconstructed, domain-aligned independent microservices leveraging polyglot storage, high-throughput independent autoscaling, and schema stitching via an Apollo GraphQL Gateway.
               </p>
             </div>
 
             {/* Interactive Architecture Schematic Simulation */}
-            <div className="rounded-xl bg-slate-950/70 border border-cyan-500/20 p-4 font-mono text-xs">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
-                <span className="text-[11px] uppercase tracking-wider text-cyan-400 font-semibold flex items-center gap-1.5">
-                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <div className="rounded-xl bg-slate-950/70 border border-cyan-500/20 p-3 sm:p-4 font-mono text-xs">
+              <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/5">
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-cyan-400 font-semibold flex items-center gap-1.5">
+                  <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   Federated Gateway Pipeline
@@ -324,49 +324,49 @@ export default function ArchitectureChoiceCards({
               {/* Data Flow Sequence */}
               <div className="space-y-2">
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "micro"
-                      ? "bg-cyan-500/20 text-white font-medium"
+                      ? "bg-cyan-500/20 text-white font-medium border-l-2 border-cyan-400"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     1
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>GraphQL Client</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">GraphQL Client</span>
                     <span className="text-white/40 text-[10px]">query {`{ payroll, telemetry }`}</span>
                   </div>
                 </div>
 
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "micro"
-                      ? "bg-cyan-500/25 text-white font-medium pl-4"
+                      ? "bg-cyan-500/25 text-white font-medium border-l-2 border-cyan-400 xs:pl-3"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     2
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>Apollo GraphQL Gateway</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">Apollo GraphQL Gateway</span>
                     <span className="text-cyan-300 text-[10px]">Concurrent Dispatch</span>
                   </div>
                 </div>
 
                 <div
-                  className={`flex items-center gap-2 p-2 rounded-lg transition-all ${
+                  className={`flex items-start xs:items-center gap-2 p-2 rounded-lg transition-all ${
                     activeSimulation === "micro"
-                      ? "bg-cyan-500/30 text-white font-medium pl-6 border border-cyan-500/40"
+                      ? "bg-cyan-500/30 text-white font-medium border border-cyan-500/40 xs:pl-4"
                       : "bg-white/[0.02] text-slate-300"
                   }`}
                 >
-                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0">
+                  <span className="h-5 w-5 rounded bg-cyan-500/30 text-cyan-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 xs:mt-0">
                     3
                   </span>
-                  <div className="flex-1 flex justify-between">
-                    <span>Polyglot Mesh (Supabase/Mongo/Firebase)</span>
+                  <div className="flex-1 flex flex-col xs:flex-row xs:items-center justify-between gap-0.5 xs:gap-2">
+                    <span className="text-xs">Polyglot Mesh (Supabase/Mongo/Firebase)</span>
                     <span className="text-emerald-400 text-[10px]">Aggregated JSON</span>
                   </div>
                 </div>
@@ -407,30 +407,30 @@ export default function ArchitectureChoiceCards({
             </div>
 
             {/* Technology Stack Tags */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 Node / Apollo
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 GraphQL + gRPC
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 Supabase Postgres
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 MongoDB Atlas
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 Firebase Firestore
               </span>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
+              <span className="text-[11px] sm:text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-200">
                 Python (Coati)
               </span>
             </div>
           </div>
 
           {/* Bottom Card Footer & Action */}
-          <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-white/10 flex items-center justify-between">
             <a
               href="#tech-matrix"
               className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-cyan-300 hover:text-white transition-colors"

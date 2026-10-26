@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-[var(--color-background)]/80 border-b border-[var(--color-card-border)] transition-colors">
-      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl 3xl:max-w-[1600px] 4k:max-w-[1800px] items-center justify-between px-4 sm:px-6 lg:px-8 3xl:px-12">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
           <Link
@@ -275,7 +275,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-mono text-[var(--color-foreground-muted)]">
-                Sprint 1 • Day 4 Live
+                Sprint 1 • Day 5 Live
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">
