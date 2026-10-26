@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer className="relative z-20 w-full border-t border-[var(--color-card-border)] bg-[var(--color-background)]/90 backdrop-blur-xl">
       {/* Upper Grid Layout Section */}
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+      <div className="mx-auto max-w-7xl 3xl:max-w-[1600px] 4k:max-w-[1800px] px-4 py-10 sm:px-6 sm:py-16 3xl:px-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           {/* Column 1: Brand & Executive Summary (spans 2 cols on wide screens) */}
           <div className="flex flex-col gap-4 lg:col-span-2">
             <div className="flex items-center gap-3">
@@ -149,8 +149,8 @@ export default function Footer() {
         </div>
 
         {/* Telemetry & System Status Ribbon */}
-        <div className="mt-12 rounded-xl border border-white/5 bg-white/[0.02] p-4 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
-          <div className="flex flex-wrap items-center gap-4 text-[var(--color-foreground-muted)]">
+        <div className="mt-10 sm:mt-12 rounded-xl border border-white/5 bg-white/[0.02] p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 font-mono text-xs">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[var(--color-foreground-muted)]">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Gateway: Online</span>
@@ -163,19 +163,19 @@ export default function Footer() {
             <div>Turborepo Monorepo</div>
           </div>
 
-          <div className="flex items-center gap-3 text-[var(--color-foreground-subtle)]">
-            <span>Sprint 1 • Day 3</span>
+          <div className="flex items-center gap-2.5 sm:gap-3 text-[var(--color-foreground-subtle)]">
+            <span className="text-emerald-400 font-medium">Sprint 1 • Day 5 Live</span>
             <span className="text-white/20">•</span>
-            <span className="text-slate-400">Lat: ~12ms</span>
+            <span className="text-slate-400">Multi-Display Responsive</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar (Flexbox) */}
-      <div className="border-t border-white/5 bg-black/40 px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[var(--color-foreground-subtle)]">
+      <div className="border-t border-white/5 bg-black/40 px-4 py-5 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl 3xl:max-w-[1600px] 4k:max-w-[1800px] 3xl:px-12 flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs font-mono text-[var(--color-foreground-subtle)] text-center sm:text-left">
           <p>© 2026 Hector Olivares Tapia. Monolithic & Microservices Dual Architecture Portfolio.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="#architectures"
               className="hover:text-white transition-colors"
