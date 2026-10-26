@@ -33,11 +33,11 @@ export default function MainContentLayout({ children }: MainContentLayoutProps) 
               </span>
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-white">
-                  Sprint 1 • Day 5
+                  Sprint 1 • Day 6
                 </span>
                 <span className="hidden sm:inline text-white/30">•</span>
                 <span className="text-xs text-[var(--color-foreground-muted)] hidden sm:inline">
-                  Mobile-First Media Queries & Multi-Display Optimization (Mobile, Tablet & 4K)
+                  Supabase Integration & Recruiter Waitlist Form Component (Loading/Error States)
                 </span>
               </div>
             </div>

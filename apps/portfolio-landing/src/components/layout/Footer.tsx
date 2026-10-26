@@ -140,6 +140,14 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="#contact"
+                  className="hover:text-emerald-300 text-emerald-400 font-medium transition-colors"
+                >
+                  Connect & Recruiter Waitlist
+                </a>
+              </li>
+              <li>
                 <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">
                   License: MIT Enterprise
                 </span>
@@ -160,13 +168,13 @@ export default function Footer() {
             <span className="hidden sm:inline text-white/20">•</span>
             <div>Tailwind CSS v4</div>
             <span className="hidden sm:inline text-white/20">•</span>
-            <div>Turborepo Monorepo</div>
+            <div>Supabase Ready</div>
           </div>
 
           <div className="flex items-center gap-2.5 sm:gap-3 text-[var(--color-foreground-subtle)]">
-            <span className="text-emerald-400 font-medium">Sprint 1 • Day 5 Live</span>
+            <span className="text-emerald-400 font-medium">Sprint 1 • Day 6 Live</span>
             <span className="text-white/20">•</span>
-            <span className="text-slate-400">Multi-Display Responsive</span>
+            <span className="text-slate-400">Waitlist Integrated</span>
           </div>
         </div>
       </div>

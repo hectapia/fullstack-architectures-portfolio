@@ -4,6 +4,7 @@ import { useState } from "react";
 import MainContentLayout from "@/components/layout/MainContentLayout";
 import HeroSection from "@/components/home/HeroSection";
 import ArchitectureChoiceCards from "@/components/home/ArchitectureChoiceCards";
+import ContactWaitlistSection from "@/components/home/ContactWaitlistSection";
 
 export default function Home() {
   const [activeParadigm, setActiveParadigm] = useState<"all" | "monolith" | "micro">("all");
@@ -153,7 +154,7 @@ export default function Home() {
             </p>
           </div>
           <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded">
-            Currently: Sprint 1 (Day 5 Active)
+            Currently: Sprint 1 (Day 6 Active)
           </span>
         </div>
 
@@ -381,6 +382,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 7. Sprint 1 Day 6: Contact & Recruiter Waitlist Form Component */}
+      <ContactWaitlistSection />
     </MainContentLayout>
   );
 }

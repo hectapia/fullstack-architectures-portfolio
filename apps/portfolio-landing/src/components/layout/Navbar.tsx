@@ -98,6 +98,12 @@ export default function Navbar() {
           >
             Roadmap
           </a>
+          <a
+            href="#contact"
+            className="px-3 py-1.5 rounded-lg text-xs lg:text-sm font-medium text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all"
+          >
+            Waitlist
+          </a>
         </nav>
 
         {/* Right Action Cluster */}
@@ -269,13 +275,24 @@ export default function Navbar() {
               <span>10-Sprint Roadmap</span>
               <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">Phases 1-3</span>
             </a>
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-sm font-medium text-emerald-300 hover:bg-emerald-500/20"
+            >
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                <span>Connect & Waitlist</span>
+              </div>
+              <span className="text-xs font-mono text-emerald-400 font-semibold">Supabase</span>
+            </a>
           </nav>
 
           <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-mono text-[var(--color-foreground-muted)]">
-                Sprint 1 • Day 5 Live
+                Sprint 1 • Day 6 Live
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">
