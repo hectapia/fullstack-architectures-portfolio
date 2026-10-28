@@ -154,7 +154,7 @@ export default function Home() {
             </p>
           </div>
           <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded">
-            Currently: Sprint 1 (Day 6 Active)
+            Sprint 1 Completed • Day 7 Finalized
           </span>
         </div>
 
@@ -180,7 +180,7 @@ export default function Home() {
               <ul className="space-y-2 pt-2 text-xs text-slate-300 border-t border-white/5">
                 <li className="flex items-center gap-2 text-emerald-300 font-medium">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  Sprint 1: Landing Gateway (Next.js 16 + Tailwind v4)
+                  Sprint 1: Landing Gateway (Next.js 16 + Tailwind v4) — Completed ✓
                 </li>
                 <li className="flex items-center gap-2 text-slate-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
@@ -383,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Sprint 1 Day 6: Contact & Recruiter Waitlist Form Component */}
+      {/* 7. Sprint 1 Day 7: Supabase Contact & Recruiter Waitlist Form Component */}
       <ContactWaitlistSection />
     </MainContentLayout>
   );

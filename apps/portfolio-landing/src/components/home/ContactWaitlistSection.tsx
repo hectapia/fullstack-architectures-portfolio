@@ -19,6 +19,7 @@ export default function ContactWaitlistSection() {
 
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
+  const [copiedId, setCopiedId] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,20 +34,21 @@ export default function ContactWaitlistSection() {
       return;
     }
 
-    if (!formData.full_name.trim() || !formData.email.trim()) {
+    if (!formData.full_name.trim() || formData.full_name.trim().length < 2) {
       setFormState("error");
       setSubmissionResult({
         success: false,
-        message: "Please provide your full name and a valid corporate email address.",
+        message: "Please enter your full name (minimum 2 characters).",
       });
       return;
     }
 
-    if (!formData.email.includes("@") || !formData.email.includes(".")) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
       setFormState("error");
       setSubmissionResult({
         success: false,
-        message: "Please enter a valid email address.",
+        message: "Please provide a valid corporate or engineering email address.",
       });
       return;
     }
@@ -89,7 +91,7 @@ export default function ContactWaitlistSection() {
           <div className="flex items-center gap-2 mb-1.5">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
             <span className="font-mono text-xs uppercase tracking-wider text-emerald-300">
-              Sprint 1 • Day 6 Deliverable
+              Sprint 1 • Day 7 Finalized & Live
             </span>
           </div>
           <h2
@@ -235,9 +237,25 @@ export default function ContactWaitlistSection() {
                 {submissionResult.recordId && (
                   <div className="flex items-center justify-between text-slate-300">
                     <span className="text-slate-500">Record UUID:</span>
-                    <span className="font-mono text-emerald-300 truncate max-w-[240px]">
-                      {submissionResult.recordId}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-emerald-300 truncate max-w-[190px] sm:max-w-[240px]">
+                        {submissionResult.recordId}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (submissionResult.recordId) {
+                            navigator.clipboard.writeText(submissionResult.recordId);
+                            setCopiedId(true);
+                            setTimeout(() => setCopiedId(false), 2000);
+                          }
+                        }}
+                        className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] text-slate-300 hover:text-white transition-colors cursor-pointer"
+                        title="Copy Record UUID"
+                      >
+                        {copiedId ? "Copied! ✓" : "Copy"}
+                      </button>
+                    </div>
                   </div>
                 )}
                 {submissionResult.timestamp && (

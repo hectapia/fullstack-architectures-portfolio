@@ -51,7 +51,20 @@ export async function submitWaitlistEntry(
   }
 
   try {
-    const payload = {
+    const recordId =
+      typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : undefined;
+
+    const payload: {
+      id?: string;
+      full_name: string;
+      email: string;
+      role: string;
+      architecture_focus: string;
+      message: string | null;
+    } = {
+      ...(recordId ? { id: recordId } : {}),
       full_name: entry.full_name.trim(),
       email: entry.email.trim().toLowerCase(),
       role: entry.role,
@@ -91,6 +104,7 @@ export async function submitWaitlistEntry(
     return {
       success: true,
       message: "Submission successfully persisted to Supabase Cloud PostgreSQL database.",
+      recordId,
       timestamp: new Date().toISOString(),
     };
   } catch (err: unknown) {
