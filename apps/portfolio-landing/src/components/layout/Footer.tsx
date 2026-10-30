@@ -172,9 +172,9 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-2.5 sm:gap-3 text-[var(--color-foreground-subtle)]">
-            <span className="text-indigo-400 font-medium">Sprint 2 • Day 1 Active</span>
+            <span className="text-indigo-400 font-medium">Sprint 2 • Day 2 Active</span>
             <span className="text-white/20">•</span>
-            <span className="text-slate-400">Django Monolith Initialized</span>
+            <span className="text-slate-400">Aiven PostgreSQL via psycopg2</span>
           </div>
         </div>
       </div>
