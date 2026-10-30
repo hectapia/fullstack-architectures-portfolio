@@ -154,7 +154,7 @@ export default function Home() {
             </p>
           </div>
           <span className="font-mono text-xs text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded">
-            Currently: Sprint 2 (Day 1 Active)
+            Currently: Sprint 2 (Day 2 Active)
           </span>
         </div>
 
@@ -184,7 +184,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2 text-indigo-300 font-medium">
                   <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                  Sprint 2: Core Platform (Django + Aiven Postgres) — Day 1 Active
+                  Sprint 2: Core Platform (Django + Aiven Postgres) — Day 2 Active
                 </li>
                 <li className="flex items-center gap-2 text-slate-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />

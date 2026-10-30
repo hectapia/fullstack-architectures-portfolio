@@ -292,7 +292,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-indigo-400 animate-pulse" />
               <span className="text-xs font-mono text-[var(--color-foreground-muted)]">
-                Sprint 2 • Day 1 Active
+                Sprint 2 • Day 2 Active
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">

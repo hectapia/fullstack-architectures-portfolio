@@ -33,11 +33,11 @@ export default function MainContentLayout({ children }: MainContentLayoutProps) 
               </span>
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span className="font-mono text-xs font-semibold uppercase tracking-wider text-indigo-400">
-                  Sprint 2 • Day 1 Active
+                  Sprint 2 • Day 2 Active
                 </span>
                 <span className="hidden sm:inline text-white/30">•</span>
                 <span className="text-xs text-[var(--color-foreground-muted)] hidden sm:inline">
-                  Django Core Monolith Backend Initialization & Virtual Environment Configuration
+                  Aiven PostgreSQL Database Connection & psycopg2 Integration
                 </span>
               </div>
             </div>
