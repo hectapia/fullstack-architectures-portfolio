@@ -28,16 +28,16 @@ export default function MainContentLayout({ children }: MainContentLayoutProps) 
           <div className="glass-panel rounded-xl px-3.5 py-3 sm:px-6 sm:py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-[var(--color-card-border)]">
             <div className="flex items-center gap-2.5 sm:gap-3">
               <span className="relative flex h-2.5 w-2.5 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500" />
               </span>
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
-                  Sprint 1 • Day 7 (Finalized)
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-indigo-400">
+                  Sprint 2 • Day 1 Active
                 </span>
                 <span className="hidden sm:inline text-white/30">•</span>
                 <span className="text-xs text-[var(--color-foreground-muted)] hidden sm:inline">
-                  Supabase Client Integration, UI Polish & Sprint 1 Production Verification
+                  Django Core Monolith Backend Initialization & Virtual Environment Configuration
                 </span>
               </div>
             </div>

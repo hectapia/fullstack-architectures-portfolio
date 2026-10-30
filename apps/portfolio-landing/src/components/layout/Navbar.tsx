@@ -290,9 +290,9 @@ export default function Navbar() {
 
           <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-indigo-400 animate-pulse" />
               <span className="text-xs font-mono text-[var(--color-foreground-muted)]">
-                Sprint 1 Complete • Day 7 Live
+                Sprint 2 • Day 1 Active
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-foreground-subtle)]">
